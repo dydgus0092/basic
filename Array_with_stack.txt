@@ -1,0 +1,46 @@
+﻿package practice;
+
+public class ArrayStack {
+	private int top; // 스택의 입출력 데이터를 가르키는 top
+	private int size; // 배열의 크기
+	private Object[] stackArray; // 배열
+	
+	public static void main(String[] args) {
+		ArrayStack as = new ArrayStack(5);
+		as.push(1);
+		as.push(2);
+		as.push(3);
+		System.out.println(as.pop());
+		System.out.println(as.pop());
+		System.out.println(as.pop());
+	}
+	
+	public ArrayStack(int size) {
+		this.top = -1;
+		this.size = size;
+		this.stackArray = new Object[size];
+	}
+	
+	public boolean isEmpty() {
+		return top==-1;
+	}
+	
+	public boolean isFull() {
+		return top==size-1;
+	}
+	
+	public void push(Object data) {
+		if(isFull()) throw new ArrayIndexOutOfBoundsException("스택초과");
+		else stackArray[++top] = data;
+	}
+	
+	public Object peek() {
+		if(isEmpty()) throw new ArrayIndexOutOfBoundsException("자료없음");
+		return stackArray[top];
+	public Object pop() {
+		Object data = peek();
+		top--;
+		return data;
+	}
+}
+
