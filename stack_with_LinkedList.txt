@@ -29,7 +29,12 @@ public class LinkedListStack {
 	public void push(Object data) {
 		// 데이터를 받아 Node객체를 생성한다.
 		Node newNode = new Node(data);
+<<<<<<< HEAD:LinkedList_with_stack.txt
 		// 새롭게 생성한 newNode를 'TOP'노드로 쌓기 전에, 직전 'TOP'노드였던 topNode를 참조한다. -> pop() 실행 후 topNode를 다시 'TOP' 노드로 만들기 위해서 
+=======
+		// 새롭게 생성한 newNode를 'TOP'노드로 쌓기 전에, 직전 'TOP'노드였던 topNode와 연결시킨다. 
+		// -> pop() 실행 후 topNode를 다시 'TOP' 노드로 만들기 위해서 
+>>>>>>> cb363ddde9fa9f16d1db76a47c63a6fc2020f756:stack_with_LinkedList.txt
 		newNode.setNextNode(topNode);
 		// newNode객체를 'TOP'노드로 쌓는다.
 		topNode = newNode;

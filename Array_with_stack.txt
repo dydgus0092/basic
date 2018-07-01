@@ -37,6 +37,8 @@ public class ArrayStack {
 	public Object peek() {
 		if(isEmpty()) throw new ArrayIndexOutOfBoundsException("자료없음");
 		return stackArray[top];
+	}
+	
 	public Object pop() {
 		Object data = peek();
 		top--;
