@@ -1,0 +1,82 @@
+﻿package practice;
+
+public class LinkedListStack {
+	
+	//링크드리스트  스택의 'TOP'노드. -> 최상단에 위치한다.
+	private Node topNode;
+	
+	public static void main(String[] args) {
+		LinkedListStack ls = new LinkedListStack();
+		ls.push(1);
+		ls.push(2);
+		ls.push(3);
+		System.out.println(ls.pop());
+		System.out.println(ls.pop());
+		System.out.println(ls.pop());
+	}
+	
+	
+	//링크드 리스트 생성자
+	public LinkedListStack() {
+		topNode = null;
+	}
+	//스택이 비어있는지 확인한다.
+	public boolean isEmpty() {
+		return (topNode == null);
+	}
+	// push() 메서드 - 새로운 Node객체를 스택에 넣는다.
+	public void push(Object data) {
+		// 데이터를 받아 Node객체를 생성한다.
+		Node newNode = new Node(data);
+		// 새롭게 생성한 newNode를 'TOP'노드로 쌓기 전에, 직전 'TOP'노드였던 topNode와 연결시킨다. -> pop() 실행 후 topNode를 다시 'TOP' 노드로 만들기 위해서 
+		newNode.setNextNode(topNode);
+		// newNode객체를 'TOP'노드로 쌓는다.
+		topNode = newNode;
+	}
+	// peek() 메서드 - 최상단에 위치한 'TOP'노드를 호출한다.
+	public Object peek() {
+		return topNode.getData();
+	}
+	// pop() 메서드 - 최상단에 위치한 'TOP' 노드를 호출하고 삭제한다.
+	public Object pop() {
+		// 스택이 비어있다면 Exception 발생
+		if (isEmpty())
+			throw new ArrayIndexOutOfBoundsException();
+	
+		else {
+			// 'TOP'노드를 호출한다.
+			Object item = peek();
+			// 'TOP'노드를 직전 'TOP'노드로 바꿔치기한다 -> 삭제와 같음
+			topNode = topNode.getNextNode();
+			return item;
+		}
+	}
+
+}
+// 노드 클래스
+class Node {
+	private Object data;
+	private Node nextNode;
+
+	public Node(Object data) {
+		this.data = data;
+		this.nextNode = null;
+	}
+
+	public Object getData() {
+		return data;
+	}
+
+	public void setData(Object data) {
+		this.data = data;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+
+	public void setNextNode(Node nextNode) {
+		this.nextNode = nextNode;
+	}
+
+}
